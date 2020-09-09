@@ -1,0 +1,17 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmitForm()">
+  <div formGroupName="postFormGroup">
+    <input
+      type="text"
+      formControlName="title"
+      placeholder="enter a title for your post"
+    />
+    <textarea
+      class="textarea"
+      formControlName="body"
+      rows="4"
+      cols="50"
+      placeholder="enter your post"
+    ></textarea>
+  </div>
+  <button type="submit" [disabled]="postForm.invalid">Add New Post</button>
+</form>

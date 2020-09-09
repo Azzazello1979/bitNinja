@@ -19,4 +19,11 @@ export class ApiService {
     this.busy = true;
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
+
+  sendPost(body: Post) {
+    /* return this.http.post<Post>(
+      'https://jsonplaceholder.typicode.com/posts',
+      body
+    ); */
+  }
 }

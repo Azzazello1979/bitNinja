@@ -12,6 +12,11 @@ export class AppComponent implements OnInit {
   title = 'Bit Ninja';
   constructor(private apiService: ApiService) {}
 
+  onUserComment(newPost: Post) {
+    console.log(newPost);
+    this.apiService.sendPost(newPost);
+  }
+
   ngOnInit() {
     this.apiService.getPosts().subscribe(
       (posts) => {

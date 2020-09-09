@@ -2,7 +2,7 @@
   <div class="posts-component-wrapper">
     <app-posts [posts]="posts"></app-posts>
   </div>
-  <div class="add-comment-component-wrapper">
-    <app-add-comment></app-add-comment>
+  <div class="add-post-component-wrapper">
+    <app-add-post (userPosted)="onUserComment($event)"></app-add-post>
   </div>
 </div>

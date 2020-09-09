@@ -7,11 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostsComponent } from './components/posts/posts.component';
-import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { AddPostComponent } from './components/add-post/add-post.component';
 import { ApiService } from './services/api.service';
 
 @NgModule({
-  declarations: [AppComponent, PostsComponent, AddCommentComponent],
+  declarations: [AppComponent, PostsComponent, AddPostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
