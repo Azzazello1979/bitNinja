@@ -7,13 +7,23 @@
     [id]="convertId(post.id)"
     [title]="post.title"
   >
-    <ng-template ngbPanelContent
-      ><p>{{ post.body }}</p>
-      <p>
-        <button type="button" (click)="onCheckCommentsClick()">
-          check comments
-        </button>
-      </p>
+    <ng-template ngbPanelContent>
+      <div>{{ post.body }}</div>
+
+      <div *ngIf="comments.length !== 0">
+        <hr />
+        <p>comments for this post:</p>
+
+        <div class="commentCard" *ngFor="let comment of comments">
+          <h4>comment by: {{ comment.name }}</h4>
+          <h5>email: {{ comment.email }}</h5>
+          <p>{{ comment.body }}</p>
+        </div>
+      </div>
+
+      <button type="button" (click)="onCheckCommentsClick()">
+        check comments
+      </button>
     </ng-template>
   </ngb-panel>
 </ngb-accordion>

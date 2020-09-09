@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
+import { Comment } from 'src/app/models/comment';
 
 @Component({
   selector: 'app-posts',
@@ -9,6 +10,7 @@ import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
 })
 export class PostsComponent {
   @Input('posts') posts: Post[] = [];
+  @Input('comments') comments: Comment[] = [];
   @Output() selectedPostChanged = new EventEmitter<number[]>();
   @Output() checkCommentsButtonClicked = new EventEmitter();
 
