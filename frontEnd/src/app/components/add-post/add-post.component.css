@@ -4,6 +4,8 @@
 .postFormGroup {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .postFormGroup > * {
   display: block;
@@ -14,6 +16,7 @@
   margin: 5px auto;
 }
 .postFormGroup input,
-textarea {
+.postFormGroup textarea {
   padding: 5px;
+  width: 50vw !important;
 }

@@ -1,25 +1,32 @@
-<h3>Write a new post</h3>
-<p>
-  Button becomes active only if you fill in both fields plus you open a post by
-  clicking on it.
-</p>
-<form [formGroup]="postForm" (ngSubmit)="onSubmitForm()">
-  <div formGroupName="postFormGroup" class="postFormGroup">
-    <input
-      type="text"
-      formControlName="title"
-      placeholder="enter a title for your post"
-    />
+<div class="formHeader">
+  <h3>Add New Post</h3>
+  <p *ngIf="postForm.invalid || currentUserId === 0">
+    Button will only work if you filled in both inputs and you also have
+    selected a post by clicking on it.
+  </p>
+</div>
+<div class="formContainer">
+  <form [formGroup]="postForm" (ngSubmit)="onSubmitForm()">
+    <div formGroupName="postFormGroup" class="postFormGroup">
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="enter a title for your post"
+      />
 
-    <textarea
-      class="textarea"
-      formControlName="body"
-      rows="4"
-      cols="50"
-      placeholder="enter your post"
-    ></textarea>
-    <button type="submit" [disabled]="postForm.invalid || currentUserId === 0">
-      Add New Post
-    </button>
-  </div>
-</form>
+      <textarea
+        class="textarea"
+        formControlName="body"
+        rows="4"
+        cols="50"
+        placeholder="enter your post"
+      ></textarea>
+      <button
+        type="submit"
+        [disabled]="postForm.invalid || currentUserId === 0"
+      >
+        Add New Post
+      </button>
+    </div>
+  </form>
+</div>
