@@ -10,13 +10,14 @@ import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
 export class PostsComponent {
   @Input('posts') posts: Post[] = [];
   @Output() selectedPostChanged = new EventEmitter<number[]>();
+  @Output() checkCommentsButtonClicked = new EventEmitter();
 
   convertId(postId: number): string {
     return `static-${postId}`;
   }
 
-  onCheckCommentsClick(postId: number) {
-    //console.log(postId);
+  onCheckCommentsClick() {
+    this.checkCommentsButtonClicked.emit();
   }
 
   passCurrentlySelectedPostData(event: PanelChangeEvent) {

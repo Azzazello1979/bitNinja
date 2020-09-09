@@ -34,8 +34,15 @@ export class AppComponent implements OnInit {
     this.apiService.setCurrentlySelectedPostData(currentlySelectedPostData);
   }
 
-  onCheckCommentButtonClicked(postId: number) {
-    console.log(postId);
+  onCheckCommentButtonClicked() {
+    this.apiService.getComments().subscribe(
+      (comments) => {
+        console.log(comments);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Post } from 'src/app/models/post';
 import { OutgoingPost } from 'src/app/models/outgoingPost';
 import { Observable } from 'rxjs';
+import { Comment } from 'src/app/models/comment';
 
 @Injectable({
   providedIn: 'root',
@@ -37,9 +38,8 @@ export class ApiService {
     return this.http.post('https://jsonplaceholder.typicode.com/posts', body);
   }
 
-  // TODO: define Comment interface
-  getComment() {
-    return this.http.get<any>(
+  getComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(
       `https://jsonplaceholder.typicode.com/posts/${this.currentPostId}/comments`
     );
   }
