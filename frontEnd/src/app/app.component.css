@@ -5,16 +5,17 @@
 }
 .comments-component-wrapper {
   padding: 10px;
-  max-height: 50vh;
+  max-height: 60vh;
   width: 90vw;
   margin: 10px auto;
   overflow-y: scroll;
   border: 1px solid lightgrey;
   border-radius: 5px;
 }
+
 .posts-component-wrapper {
   padding: 10px;
-  height: 40vh;
+  max-height: 60vh;
   width: 90vw;
   margin: 10px auto;
   overflow-y: scroll;
@@ -27,6 +28,7 @@
   width: 90vw;
   margin: 10px auto;
   border: 1px solid lightgrey;
+  border-radius: 5px;
   padding: 10px;
 }
 
@@ -42,4 +44,14 @@
 }
 .busy-overlay img {
   width: 20vw;
+}
+.clearCommentsHeader {
+  cursor: pointer;
+}
+.closeButton {
+  width: 40px;
+  transition: 0.5s ease-in-out;
+}
+.closeButton:hover {
+  transform: rotateX(-180deg);
 }

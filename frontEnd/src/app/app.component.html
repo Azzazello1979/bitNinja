@@ -2,8 +2,13 @@
   <img src="./../assets/progress-2.gif" />
 </div>
 <div class="app-component-wrapper">
-  <h3 (click)="clearComments()" *ngIf="comments.length !== 0">
-    Comments (click to close)
+  <h3
+    (click)="clearComments()"
+    *ngIf="comments.length !== 0"
+    class="clearCommentsHeader"
+  >
+    Comments
+    <img class="closeButton" src="./../assets/close.jpg" />
   </h3>
   <div
     class="comments-component-wrapper niceShadow"

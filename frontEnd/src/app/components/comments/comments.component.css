@@ -1,6 +1,17 @@
+.commentCard:nth-child(odd) {
+  background-color: rgb(255, 255, 166);
+}
+.commentCard:nth-child(even) {
+  background-color: rgb(253, 253, 214);
+}
+
 .commentCard {
   border: 1px solid grey;
   border-radius: 5px;
   padding: 5px;
   margin-top: 5px;
+}
+.bold {
+  font-weight: bold;
+  background: transparent;
 }
