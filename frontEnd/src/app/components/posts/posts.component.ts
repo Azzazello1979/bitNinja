@@ -9,18 +9,22 @@ import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
 })
 export class PostsComponent {
   @Input('posts') posts: Post[] = [];
-  @Output() userIdChangedByPostClick = new EventEmitter<number>();
+  @Output() selectedPostChanged = new EventEmitter<number[]>();
 
   convertId(postId: number): string {
     return `static-${postId}`;
   }
 
-  returnUserIdFromSelectedPost(event: PanelChangeEvent) {
+  onCheckCommentsClick(postId: number) {
+    //console.log(postId);
+  }
+
+  passCurrentlySelectedPostData(event: PanelChangeEvent) {
     let postId: number = parseInt(event.panelId.slice(7, event.panelId.length));
     let userId: number = 0;
     this.posts.forEach((post) => {
       post.id === postId ? (userId = post.userId) : null;
     });
-    return this.userIdChangedByPostClick.emit(userId);
+    return this.selectedPostChanged.emit([userId, postId]);
   }
 }

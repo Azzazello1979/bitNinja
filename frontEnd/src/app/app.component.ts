@@ -29,9 +29,13 @@ export class AppComponent implements OnInit {
     );
   }
 
-  onUserIdChange(userId: number) {
-    this.currentUserId = userId;
-    this.apiService.setCurrentUserId(userId);
+  onCurrentlySelectedPostChanged(currentlySelectedPostData: number[]) {
+    this.currentUserId = currentlySelectedPostData[0];
+    this.apiService.setCurrentlySelectedPostData(currentlySelectedPostData);
+  }
+
+  onCheckCommentButtonClicked(postId: number) {
+    console.log(postId);
   }
 
   ngOnInit() {

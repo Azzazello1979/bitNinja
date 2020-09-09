@@ -10,12 +10,14 @@ import { Observable } from 'rxjs';
 export class ApiService {
   private busy: boolean = false;
   private currentUserId: number = 0;
+  private currentPostId: number = 0;
 
   constructor(private http: HttpClient) {}
 
-  setCurrentUserId(userId: number) {
-    this.currentUserId = userId;
-    //console.log(this.currentUserId);
+  setCurrentlySelectedPostData(currentlySelectedPostData: number[]) {
+    this.currentUserId = currentlySelectedPostData[0];
+    this.currentPostId = currentlySelectedPostData[1];
+    console.log(this.currentPostId);
   }
 
   toggleBusy() {
@@ -33,5 +35,12 @@ export class ApiService {
     body.userId = this.currentUserId;
     //console.log('outgoing post is: ', body);
     return this.http.post('https://jsonplaceholder.typicode.com/posts', body);
+  }
+
+  // TODO: define Comment interface
+  getComment() {
+    return this.http.get<any>(
+      `https://jsonplaceholder.typicode.com/posts/${this.currentPostId}/comments`
+    );
   }
 }

@@ -2,7 +2,8 @@
   <div class="posts-component-wrapper">
     <app-posts
       [posts]="posts"
-      (userIdChangedByPostClick)="onUserIdChange($event)"
+      (selectedPostChanged)="onCurrentlySelectedPostChanged($event)"
+      (checkCommentButtonClicked)="onCheckCommentButtonClicked($event)"
     ></app-posts>
   </div>
   <div class="add-post-component-wrapper">
