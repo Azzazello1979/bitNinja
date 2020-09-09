@@ -12,4 +12,8 @@ export class PostsComponent {
   convertId(id: number): string {
     return `static-${id}`;
   }
+
+  onPanelChange(e) {
+    console.log(e);
+  }
 }
