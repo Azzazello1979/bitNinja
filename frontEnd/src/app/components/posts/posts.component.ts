@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Post } from 'src/app/models/post';
+import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
 
 @Component({
   selector: 'app-posts',
@@ -13,7 +14,7 @@ export class PostsComponent {
     return `static-${id}`;
   }
 
-  onPanelChange(e) {
-    console.log(e);
+  onPanelChange(event: PanelChangeEvent) {
+    console.log(event);
   }
 }
