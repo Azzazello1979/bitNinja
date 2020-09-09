@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
-import { Comment } from 'src/app/models/comment';
 
 @Component({
   selector: 'app-posts',

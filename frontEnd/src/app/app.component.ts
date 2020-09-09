@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
-import { Post } from './models/post';
+import { ApiService } from 'src/app/services/api.service';
+import { Post } from 'src/app/models/post';
 import { OutgoingPost } from 'src/app/models/outgoingPost';
 import { Comment } from 'src/app/models/comment';
 
@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   }
 
   onUserPost(newPost: OutgoingPost) {
-    //console.log(newPost);
     this.apiService.sendPost(newPost).subscribe(
       (response: Post) => {
         response.id = this.currentPostId++;
@@ -44,7 +43,6 @@ export class AppComponent implements OnInit {
   onCheckCommentButtonClicked() {
     this.apiService.getComments().subscribe(
       (comments) => {
-        console.log(comments);
         this.comments = [...comments];
         this.apiService.toggleBusy();
       },
@@ -57,7 +55,6 @@ export class AppComponent implements OnInit {
   bringPosts() {
     this.apiService.getPosts().subscribe(
       (posts) => {
-        //console.log(posts);
         this.posts = [...posts];
         this.apiService.toggleBusy();
       },
@@ -71,7 +68,6 @@ export class AppComponent implements OnInit {
     this.bringPosts();
     this.apiService.broadcastBusyStatus().subscribe((busyStatus) => {
       this.busy = busyStatus;
-      console.log(this.busy);
     });
   }
 }

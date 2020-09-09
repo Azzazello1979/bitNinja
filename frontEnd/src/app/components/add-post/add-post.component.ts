@@ -14,7 +14,6 @@ export class AddPostComponent implements OnInit {
   constructor() {}
 
   onSubmitForm() {
-    //console.log(this.postForm.value.postFormGroup);
     this.userPosted.emit(this.postForm.value.postFormGroup);
     this.postForm.reset();
   }

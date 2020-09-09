@@ -19,7 +19,6 @@ export class ApiService {
   setCurrentlySelectedPostData(currentlySelectedPostData: number[]) {
     this.currentUserId = currentlySelectedPostData[0];
     this.currentPostId = currentlySelectedPostData[1];
-    //console.log(this.currentPostId);
   }
 
   broadcastBusyStatus() {
@@ -40,7 +39,6 @@ export class ApiService {
     this.toggleBusy();
     let body = { ...partialBody };
     body.userId = this.currentUserId;
-    //console.log('outgoing post is: ', body);
     return this.http.post('https://jsonplaceholder.typicode.com/posts', body);
   }
 
