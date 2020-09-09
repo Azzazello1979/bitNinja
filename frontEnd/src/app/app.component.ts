@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { Post } from './models/post';
 import { OutgoingPost } from 'src/app/models/outgoingPost';
@@ -9,16 +9,28 @@ import { OutgoingPost } from 'src/app/models/outgoingPost';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  @Output() posts: Post[] = [];
+  posts: Post[] = [];
   title = 'Bit Ninja App';
+  currentUserId: number = 0;
+  currentPostId: number = 101; // for posting new posts, the response id is always 101, this would casuse problems when displaying posts
+
   constructor(private apiService: ApiService) {}
 
   onUserPost(newPost: OutgoingPost) {
-    console.log(newPost);
-    this.apiService.sendPost(newPost);
+    //console.log(newPost);
+    this.apiService.sendPost(newPost).subscribe(
+      (response: Post) => {
+        response.id = this.currentPostId++;
+        this.posts.unshift(response);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   onUserIdChange(userId: number) {
+    this.currentUserId = userId;
     this.apiService.setCurrentUserId(userId);
   }
 

@@ -27,8 +27,11 @@ export class ApiService {
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
-  sendPost(body: OutgoingPost) {
+  sendPost(partialBody: OutgoingPost) {
     this.busy = true;
+    let body = { ...partialBody };
+    body.userId = this.currentUserId;
+    //console.log('outgoing post is: ', body);
     return this.http.post('https://jsonplaceholder.typicode.com/posts', body);
   }
 }

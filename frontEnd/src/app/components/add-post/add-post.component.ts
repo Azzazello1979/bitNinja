@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { OutgoingPost } from 'src/app/models/outgoingPost';
 
@@ -9,12 +9,14 @@ import { OutgoingPost } from 'src/app/models/outgoingPost';
 })
 export class AddPostComponent implements OnInit {
   @Output() public userPosted = new EventEmitter<OutgoingPost>();
+  @Input('currentUserId') currentUserId: number = 0;
   public postForm: FormGroup;
   constructor() {}
 
   onSubmitForm() {
     //console.log(this.postForm.value.postFormGroup);
     this.userPosted.emit(this.postForm.value.postFormGroup);
+    this.postForm.reset();
   }
 
   ngOnInit(): void {

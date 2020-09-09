@@ -6,6 +6,9 @@
     ></app-posts>
   </div>
   <div class="add-post-component-wrapper">
-    <app-add-post (userPosted)="onUserPost($event)"></app-add-post>
+    <app-add-post
+      (userPosted)="onUserPost($event)"
+      [currentUserId]="currentUserId"
+    ></app-add-post>
   </div>
 </div>

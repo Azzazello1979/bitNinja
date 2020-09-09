@@ -1,3 +1,8 @@
+<h3>Write a new post</h3>
+<p>
+  Button becomes active only if you fill in both fields plus you open a post by
+  clicking on it.
+</p>
 <form [formGroup]="postForm" (ngSubmit)="onSubmitForm()">
   <div formGroupName="postFormGroup" class="postFormGroup">
     <input
@@ -5,6 +10,7 @@
       formControlName="title"
       placeholder="enter a title for your post"
     />
+
     <textarea
       class="textarea"
       formControlName="body"
@@ -12,6 +18,8 @@
       cols="50"
       placeholder="enter your post"
     ></textarea>
-    <button type="submit" [disabled]="postForm.invalid">Add New Post</button>
+    <button type="submit" [disabled]="postForm.invalid || currentUserId === 0">
+      Add New Post
+    </button>
   </div>
 </form>
