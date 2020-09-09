@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from 'src/app/models/post';
 import { OutgoingPost } from 'src/app/models/outgoingPost';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Comment } from 'src/app/models/comment';
 
 @Injectable({
@@ -10,6 +10,7 @@ import { Comment } from 'src/app/models/comment';
 })
 export class ApiService {
   private busy: boolean = false;
+  private busyChanged = new BehaviorSubject<boolean>(this.busy);
   private currentUserId: number = 0;
   private currentPostId: number = 0;
 
@@ -18,20 +19,25 @@ export class ApiService {
   setCurrentlySelectedPostData(currentlySelectedPostData: number[]) {
     this.currentUserId = currentlySelectedPostData[0];
     this.currentPostId = currentlySelectedPostData[1];
-    console.log(this.currentPostId);
+    //console.log(this.currentPostId);
+  }
+
+  broadcastBusyStatus() {
+    return this.busyChanged.asObservable();
   }
 
   toggleBusy() {
     this.busy = !this.busy;
+    this.busyChanged.next(this.busy);
   }
 
   getPosts(): Observable<Post[]> {
-    this.busy = true;
+    this.toggleBusy();
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
   sendPost(partialBody: OutgoingPost) {
-    this.busy = true;
+    this.toggleBusy();
     let body = { ...partialBody };
     body.userId = this.currentUserId;
     //console.log('outgoing post is: ', body);
@@ -39,6 +45,7 @@ export class ApiService {
   }
 
   getComments(): Observable<Comment[]> {
+    this.toggleBusy();
     return this.http.get<Comment[]>(
       `https://jsonplaceholder.typicode.com/posts/${this.currentPostId}/comments`
     );

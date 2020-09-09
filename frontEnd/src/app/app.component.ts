@@ -9,6 +9,7 @@ import { OutgoingPost } from 'src/app/models/outgoingPost';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  busy: boolean = false;
   posts: Post[] = [];
   title = 'Bit Ninja App';
   currentUserId: number = 0;
@@ -22,6 +23,7 @@ export class AppComponent implements OnInit {
       (response: Post) => {
         response.id = this.currentPostId++;
         this.posts.unshift(response);
+        this.apiService.toggleBusy();
       },
       (err) => {
         console.log(err);
@@ -38,6 +40,7 @@ export class AppComponent implements OnInit {
     this.apiService.getComments().subscribe(
       (comments) => {
         console.log(comments);
+        this.apiService.toggleBusy();
       },
       (err) => {
         console.log(err);
@@ -45,7 +48,7 @@ export class AppComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+  bringPosts() {
     this.apiService.getPosts().subscribe(
       (posts) => {
         //console.log(posts);
@@ -56,5 +59,13 @@ export class AppComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  ngOnInit() {
+    this.bringPosts();
+    this.apiService.broadcastBusyStatus().subscribe((busyStatus) => {
+      this.busy = busyStatus;
+      console.log(this.busy);
+    });
   }
 }
