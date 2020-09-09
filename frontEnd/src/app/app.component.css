@@ -1,12 +1,13 @@
 .app-component-wrapper {
   display: flex;
   flex-direction: column;
+  margin: 10px 0;
 }
 .comments-component-wrapper {
   padding: 10px;
   max-height: 50vh;
   width: 90vw;
-  margin: 0 auto;
+  margin: 10px auto;
   overflow-y: scroll;
   border: 1px solid lightgrey;
   border-radius: 5px;
@@ -24,7 +25,7 @@
   display: flex;
   justify-content: center;
   width: 90vw;
-  margin: 0 auto;
+  margin: 10px auto;
   border: 1px solid lightgrey;
   padding: 10px;
 }

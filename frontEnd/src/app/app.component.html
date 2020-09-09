@@ -2,17 +2,24 @@
   <img src="./../assets/progress-2.gif" />
 </div>
 <div class="app-component-wrapper">
-  <div class="comments-component-wrapper" *ngIf="comments.length !== 0">
+  <h3 (click)="clearComments()" *ngIf="comments.length !== 0">
+    Comments (click to close)
+  </h3>
+  <div
+    class="comments-component-wrapper niceShadow"
+    *ngIf="comments.length !== 0"
+  >
     <app-comments [comments]="comments"></app-comments>
   </div>
-  <div class="posts-component-wrapper">
+  <h3>Posts</h3>
+  <div class="posts-component-wrapper niceShadow">
     <app-posts
       [posts]="posts"
       (selectedPostChanged)="onCurrentlySelectedPostChanged($event)"
       (checkCommentsButtonClicked)="onCheckCommentButtonClicked()"
     ></app-posts>
   </div>
-  <div class="add-post-component-wrapper">
+  <div class="add-post-component-wrapper niceShadow">
     <app-add-post
       (userPosted)="onUserPost($event)"
       [currentUserId]="currentUserId"

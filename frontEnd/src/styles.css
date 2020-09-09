@@ -9,3 +9,8 @@ body {
   margin: 0;
   text-align: center;
 }
+.niceShadow {
+  -webkit-box-shadow: 4px 4px 4px 0px rgba(94, 94, 94, 1);
+  -moz-box-shadow: 4px 4px 4px 0px rgba(94, 94, 94, 1);
+  box-shadow: 4px 4px 4px 0px rgba(94, 94, 94, 1);
+}

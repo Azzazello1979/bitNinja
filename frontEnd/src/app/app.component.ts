@@ -12,12 +12,15 @@ import { Comment } from 'src/app/models/comment';
 export class AppComponent implements OnInit {
   busy: boolean = false;
   posts: Post[] = [];
-  title = 'Bit Ninja App';
   currentUserId: number = 0;
   currentPostId: number = 101; // for posting new posts, the response id is always 101, this would casuse problems when displaying posts
   comments: Comment[] = [];
 
   constructor(private apiService: ApiService) {}
+
+  clearComments() {
+    this.comments = [];
+  }
 
   onUserPost(newPost: OutgoingPost) {
     //console.log(newPost);
