@@ -1,10 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { ApiService } from './services/api.service';
+import { Post } from './models/post';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  title = 'frontEnd';
+export class AppComponent implements OnInit {
+  @Output() posts: Post[] = [];
+  title = 'Bit Ninja';
+  constructor(private apiService: ApiService) {}
+
+  ngOnInit() {
+    this.apiService.getPosts().subscribe(
+      (posts) => {
+        //console.log(posts);
+        this.posts = [...posts];
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }
