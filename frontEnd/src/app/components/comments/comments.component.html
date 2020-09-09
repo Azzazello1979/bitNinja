@@ -1,0 +1,7 @@
+<div class="commentsWrapper">
+  <div class="commentCard" *ngFor="let comment of comments">
+    <p>name: {{ comment.name }}</p>
+    <p>email: {{ comment.email }}</p>
+    <p>{{ comment.body }}</p>
+  </div>
+</div>

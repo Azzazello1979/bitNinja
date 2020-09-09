@@ -10,9 +10,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostsComponent } from './components/posts/posts.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { ApiService } from './services/api.service';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
-  declarations: [AppComponent, PostsComponent, AddPostComponent],
+  declarations: [AppComponent, PostsComponent, AddPostComponent, CommentsComponent],
   imports: [
     CommonModule,
     BrowserModule,

@@ -2,9 +2,11 @@
   <img src="./../assets/progress-2.gif" />
 </div>
 <div class="app-component-wrapper">
+  <div class="comments-component-wrapper" *ngIf="comments.length !== 0">
+    <app-comments [comments]="comments"></app-comments>
+  </div>
   <div class="posts-component-wrapper">
     <app-posts
-      [comments]="comments"
       [posts]="posts"
       (selectedPostChanged)="onCurrentlySelectedPostChanged($event)"
       (checkCommentsButtonClicked)="onCheckCommentButtonClicked()"

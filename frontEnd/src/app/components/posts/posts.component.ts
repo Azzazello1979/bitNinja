@@ -10,7 +10,6 @@ import { Comment } from 'src/app/models/comment';
 })
 export class PostsComponent {
   @Input('posts') posts: Post[] = [];
-  @Input('comments') comments: Comment[] = [];
   @Output() selectedPostChanged = new EventEmitter<number[]>();
   @Output() checkCommentsButtonClicked = new EventEmitter();
 
@@ -22,6 +21,7 @@ export class PostsComponent {
     this.checkCommentsButtonClicked.emit();
   }
 
+  // as user clicks on a post
   passCurrentlySelectedPostData(event: PanelChangeEvent) {
     let postId: number = parseInt(event.panelId.slice(7, event.panelId.length));
     let userId: number = 0;
