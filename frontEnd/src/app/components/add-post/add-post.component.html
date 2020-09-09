@@ -1,5 +1,5 @@
 <form [formGroup]="postForm" (ngSubmit)="onSubmitForm()">
-  <div formGroupName="postFormGroup">
+  <div formGroupName="postFormGroup" class="postFormGroup">
     <input
       type="text"
       formControlName="title"
@@ -12,6 +12,6 @@
       cols="50"
       placeholder="enter your post"
     ></textarea>
+    <button type="submit" [disabled]="postForm.invalid">Add New Post</button>
   </div>
-  <button type="submit" [disabled]="postForm.invalid">Add New Post</button>
 </form>
