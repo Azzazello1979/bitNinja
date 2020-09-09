@@ -1,7 +1,8 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { Post } from './models/post';
 import { OutgoingPost } from 'src/app/models/outgoingPost';
+import { Comment } from 'src/app/models/comment';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent implements OnInit {
   title = 'Bit Ninja App';
   currentUserId: number = 0;
   currentPostId: number = 101; // for posting new posts, the response id is always 101, this would casuse problems when displaying posts
+  comments: Comment[] = [];
 
   constructor(private apiService: ApiService) {}
 
@@ -40,6 +42,7 @@ export class AppComponent implements OnInit {
     this.apiService.getComments().subscribe(
       (comments) => {
         console.log(comments);
+        this.comments = [...comments];
         this.apiService.toggleBusy();
       },
       (err) => {
