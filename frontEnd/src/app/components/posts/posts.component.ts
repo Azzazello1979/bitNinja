@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from 'src/app/models/post';
 import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
 
@@ -9,12 +9,18 @@ import { PanelChangeEvent } from 'src/app/models/panelChangeEvent';
 })
 export class PostsComponent {
   @Input('posts') posts: Post[] = [];
+  @Output() userIdChangedByPostClick = new EventEmitter<number>();
 
-  convertId(id: number): string {
-    return `static-${id}`;
+  convertId(postId: number): string {
+    return `static-${postId}`;
   }
 
-  onPanelChange(event: PanelChangeEvent) {
-    console.log(event);
+  returnUserIdFromSelectedPost(event: PanelChangeEvent) {
+    let postId: number = parseInt(event.panelId.slice(7, event.panelId.length));
+    let userId: number = 0;
+    this.posts.forEach((post) => {
+      post.id === postId ? (userId = post.userId) : null;
+    });
+    return this.userIdChangedByPostClick.emit(userId);
   }
 }

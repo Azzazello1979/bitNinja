@@ -1,13 +1,12 @@
 <ngb-accordion
   [closeOthers]="true"
   activeIds="static-1"
-  (panelChange)="onPanelChange($event)"
+  (panelChange)="returnUserIdFromSelectedPost($event)"
 >
   <ngb-panel
     *ngFor="let post of posts"
     [id]="convertId(post.id)"
     [title]="post.title"
-    class="thePanel"
   >
     <ng-template ngbPanelContent>{{ post.body }}</ng-template>
   </ngb-panel>

@@ -1,8 +1,11 @@
 <div class="app-component-wrapper">
   <div class="posts-component-wrapper">
-    <app-posts [posts]="posts"></app-posts>
+    <app-posts
+      [posts]="posts"
+      (userIdChangedByPostClick)="onUserIdChange($event)"
+    ></app-posts>
   </div>
   <div class="add-post-component-wrapper">
-    <app-add-post (userPosted)="onUserComment($event)"></app-add-post>
+    <app-add-post (userPosted)="onUserPost($event)"></app-add-post>
   </div>
 </div>

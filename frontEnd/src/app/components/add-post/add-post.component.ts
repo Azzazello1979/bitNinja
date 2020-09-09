@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Post } from 'src/app/models/post';
+import { OutgoingPost } from 'src/app/models/outgoingPost';
 
 @Component({
   selector: 'app-add-post',
@@ -8,13 +8,13 @@ import { Post } from 'src/app/models/post';
   styleUrls: ['./add-post.component.css'],
 })
 export class AddPostComponent implements OnInit {
-  @Output() public userPosted = new EventEmitter<Post>();
+  @Output() public userPosted = new EventEmitter<OutgoingPost>();
   public postForm: FormGroup;
   constructor() {}
 
   onSubmitForm() {
-    //console.log(this.commentForm.value.commentFormGroup.comment);
-    this.userPosted.emit(this.postForm.value.commentFormGroup.comment);
+    //console.log(this.postForm.value.postFormGroup);
+    this.userPosted.emit(this.postForm.value.postFormGroup);
   }
 
   ngOnInit(): void {

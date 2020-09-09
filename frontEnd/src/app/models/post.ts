@@ -1,6 +1,5 @@
-export interface Post {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
+import { OutgoingPost } from './outgoingPost';
+
+export interface Post extends OutgoingPost {
+  id: number; //the id of the post
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Post } from './../models/post';
+import { Post } from 'src/app/models/post';
+import { OutgoingPost } from 'src/app/models/outgoingPost';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,8 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private busy: boolean = false;
+  private currentUserId: number = 0;
 
   constructor(private http: HttpClient) {}
+
+  setCurrentUserId(userId: number) {
+    this.currentUserId = userId;
+    //console.log(this.currentUserId);
+  }
 
   toggleBusy() {
     this.busy = !this.busy;
@@ -20,10 +27,8 @@ export class ApiService {
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
-  sendPost(body: Post) {
-    /* return this.http.post<Post>(
-      'https://jsonplaceholder.typicode.com/posts',
-      body
-    ); */
+  sendPost(body: OutgoingPost) {
+    this.busy = true;
+    return this.http.post('https://jsonplaceholder.typicode.com/posts', body);
   }
 }

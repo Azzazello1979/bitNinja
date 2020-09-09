@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ApiService } from './services/api.service';
 import { Post } from './models/post';
+import { OutgoingPost } from 'src/app/models/outgoingPost';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,16 @@ import { Post } from './models/post';
 })
 export class AppComponent implements OnInit {
   @Output() posts: Post[] = [];
-  title = 'Bit Ninja';
+  title = 'Bit Ninja App';
   constructor(private apiService: ApiService) {}
 
-  onUserComment(newPost: Post) {
+  onUserPost(newPost: OutgoingPost) {
     console.log(newPost);
     this.apiService.sendPost(newPost);
+  }
+
+  onUserIdChange(userId: number) {
+    this.apiService.setCurrentUserId(userId);
   }
 
   ngOnInit() {
