@@ -3,6 +3,7 @@
     *ngFor="let post of posts"
     [id]="convertId(post.id)"
     [title]="post.title"
+    class="thePanel"
   >
     <ng-template ngbPanelContent>{{ post.body }}</ng-template>
   </ngb-panel>

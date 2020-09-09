@@ -1,0 +1,21 @@
+.app-component-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.posts-component-wrapper {
+  padding: 10px;
+  height: 50vh;
+  width: 90vw;
+  margin: 10px auto;
+  overflow-y: scroll;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+.add-comment-component-wrapper {
+  width: 90vw;
+  margin: 0 auto;
+  border: 1px solid lightgrey;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}

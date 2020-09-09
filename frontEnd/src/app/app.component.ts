@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
       (posts) => {
         //console.log(posts);
         this.posts = [...posts];
+        this.apiService.toggleBusy();
       },
       (err) => {
         console.log(err);

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from './../models/post';
 import { Observable } from 'rxjs';
-import { retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +11,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
+  toggleBusy() {
+    this.busy = !this.busy;
+  }
+
   getPosts(): Observable<Post[]> {
-    return this.http
-      .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
-      .pipe(retry(3));
+    this.busy = true;
+    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 }
